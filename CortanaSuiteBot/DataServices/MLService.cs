@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -38,9 +39,10 @@ namespace CortanaSuiteBot.DataServices
                     }
                 };
 
-                const string apiKey = "pla4+i2x3LwVdTj2IgzujgzeLld9gKH5ywbUKDcYPNlERVzuhS75FtRXFWgIgwkzhOXP4/CVfR0MKNqHbNaPUQ=="; // Replace this with the API key for the web service
+                 string apiKey = ConfigurationManager.AppSettings["apiKey"].ToString();// Replace this with the API key for the web service
+                
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
-                client.BaseAddress = new Uri("https://europewest.services.azureml.net/subscriptions/f33ca118f75e44d3b04d19104acc699e/services/ec1ff143dba34f7395db466f2ac90163/execute?api-version=3.0&format=swagger");
+                client.BaseAddress = new Uri(ConfigurationManager.AppSettings["apiURL"].ToString());
 
                 // WARNING: The 'await' statement below can result in a deadlock
                 // if you are calling this code from the UI thread of an ASP.Net application.

@@ -28,7 +28,7 @@ namespace CortanaSuiteBot.Dialogs
 
             // return our reply to the user
             // await context.PostAsync($"You sent {activity.Text} which was {length} characters");
-            await context.PostAsync("Ten cuidado! La multa mas comun en estos momentos es:");
+            await context.PostAsync("¡Ten cuidado! La multa más común en estos momentos es:");
 
             var mlResponse = await MLService.InvokeRequestResponseService();
             await context.PostAsync(mlResponse);
